@@ -60,6 +60,40 @@ String   expectedTitleIcerik = "Men Fashion";
     // gectigimiz her sayfanin WindowHandleDegerini kaydetmeliyiz
 
     // test otomasyon anasayfada oldugumuzu test edin
+    // url ile test edelim https://testotomasyonu.com/
+
+   expectedUrl = "https://www.testotomasyonu.com/";
+   actualUrl = driver.getCurrentUrl();
+
+    Assert.assertEquals(expectedUrl,actualUrl);
+    // tekrar electronics acik olan tab'a gecin
+
+    driver.switchTo().window(electronicsWHD);
+
+    // electronics bolumunde oldugunuzu test edin
+
+    expectedTitleIcerik = "Electronics";
+    actualTitle = driver.getTitle();
+
+    Assert.assertTrue(actualTitle.contains(expectedTitleIcerik));
+
+    // tekrar men fashion acik olan tab'a gecin
+    ReusableMethods.bekle(2);
+    driver.switchTo().window(manfashionWHD);
+
+
+    // men fashion bolumunde oldugunuzu test edin
+    expectedTitleIcerik = "Men Fashion";
+    actualTitle = driver.getTitle();
+
+    Assert.assertTrue(actualTitle.contains(expectedTitleIcerik));
+
+
+    ReusableMethods.bekle(5);
+
+
+
+
 
 
 
