@@ -1,9 +1,11 @@
 package utilities;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ReusableMethods {
 
@@ -27,5 +29,21 @@ public class ReusableMethods {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static WebDriver titleIleSayfaDegistir(WebDriver driver , String hedefSayfaTitle){
+
+        Set<String> tumWhdSeti = driver.getWindowHandles();
+
+        for (String each : tumWhdSeti
+        ) {
+
+            String eachTitle = driver.switchTo().window(each).getTitle();
+            if (eachTitle.equals(hedefSayfaTitle)){
+                return driver;
+            }
+        }
+
+        return driver;
     }
 }
